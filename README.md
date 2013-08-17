@@ -1,6 +1,6 @@
 # CardspringBrowse
 
-TODO: Write a gem description
+Browse Cardspring data via the CardSpring API
 
 ## Installation
 
