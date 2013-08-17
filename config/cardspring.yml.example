@@ -1,3 +1,15 @@
-api_base_url:   https://api-test.cardspring.com/v1
-api_id:         <-- your API KEY -->
-api_secret:     <-- your API SECRET -->
+sandbox: &sandbox
+  api_base_url:   https://api-test.cardspring.com/v1
+  api_id:         <-- your sandbox API KEY -->
+  api_secret:     <-- your sandbox API SECRET -->
+
+test:
+  <<:  *sandbox
+
+development:
+  <<:  *sandbox
+
+production:
+  api_base_url:   https://api.cardspring.com/v1
+  api_id:         <-- your production API KEY -->
+  api_secret:     <-- your production API SECRET -->

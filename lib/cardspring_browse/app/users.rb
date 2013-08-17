@@ -5,10 +5,6 @@ require 'yaml'
 
 module CardspringBrowse
   class Users < Sinatra::Base
-    configure do
-      set :cardspring_yaml_path, File.expand_path("../../config/cardspring.yml", File.dirname(__FILE__))
-    end
-
     helpers do
       def users_path
         url("/users")
@@ -54,7 +50,7 @@ module CardspringBrowse
     private
 
     def configuration
-      @configuration ||= YAML.load_file(settings.cardspring_yaml_path)
+      @configuration ||= YAML.load_file(CardspringBrowse::GlobalSettings.current[:cardspring_yaml_path])[settings.environment.to_s]
     end
 
     def conn
