@@ -1,0 +1,29 @@
+<!--
+<%= result_body %>
+-->
+<h2>Users</h2>
+
+<div class="pagination">
+<a href="<%= previous_url %>">Previous</a> | <a href="<%= next_url %>">Next</a>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Uri</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(users).each do |user| %>
+    <tr>
+      <td><%= user['id'] %></td>
+      <td><%= user['_uri'] %></td>
+      <td>
+        <a href="<%= user_path(user) %>">Details</a> | <form action="<%= remove_user_path(user) %>" method="post"><input type="submit" value="Remove" /></form></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<a href="<%= url("/") %>">Back</a>

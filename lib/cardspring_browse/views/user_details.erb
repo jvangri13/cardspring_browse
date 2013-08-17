@@ -1,0 +1,44 @@
+<!--
+<%= result_body %>
+-->
+<h2>User Details</h2>
+
+<p>Id: <%= user['id'] %></p>
+<p>Uri: <%= user['_uri'] %></p>
+
+<% unless user['cards'].nil? %>
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Last4</th>
+      <th>Expiration</th>
+      <th>Brand</th>
+      <th>Brand_string</th>
+      <th>Bank</th>
+      <th>Country</th>
+      <th>User_id</th>
+      <th>Uri</th>
+      <th>Capabilities</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(user['cards']['items']).each do |card| %>
+    <tr>
+      <td><%= card['token'] %></td>
+      <td><%= card['last4'] %></td>
+      <td><%= card['expiration'] %></td>
+      <td><%= card['brand'] %></td>
+      <td><%= card['brand_string'] %></td>
+      <td><%= card['bank'] %></td>
+      <td><%= card['country'] %></td>
+      <td><%= card['user_id'] %></td>
+      <td><%= card['_uri'] %></td>
+      <td><%= Array(card['capabilities']).join(", ") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<a href="<%= users_path %>">Back</a> | <form action="<%= remove_user_path(user) %>" method="post"><input type="submit" value="Remove" /></form>
