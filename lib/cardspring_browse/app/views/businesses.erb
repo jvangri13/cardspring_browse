@@ -1,0 +1,40 @@
+<!--
+<%= result_body %>
+-->
+<h2>Businesses</h2>
+
+<div class="pagination">
+<a href="<%= previous_url %>">Previous</a> | <a href="<%= next_url %>">Next</a>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Business Directory Id</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Notification Capabilities</th>
+      <th>Redemption Capabilities</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(businesses).each do |business| %>
+    <tr>
+      <td><%= business['id'] %></td>
+      <td><%= business['business_directory_id'] %></td>
+      <td><%= business['name'] %></td>
+      <td><%= business['phone'] %></td>
+      <td><%= business['email'] %></td>
+      <td><%= business['status'] %></td>
+      <td><%= business['notification_capabilities'].join(", ") %></td>
+      <td><%= business['redemption_capabilities'].join(", ") %></td>
+      <td><a href="<%= url(business['_uri']) %>"><%= h(business['_uri']) %></a> | <form action="<%= url(business['_uri']) %>" method="post"><input type="submit" value="Remove" /></form></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<a href="<%= url("/") %>">Back</a>

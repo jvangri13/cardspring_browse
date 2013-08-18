@@ -1,0 +1,69 @@
+<!--
+<%= result_body %>
+-->
+<h2>Stores</h2>
+
+<div class="pagination">
+<a href="<%= previous_url %>">Previous</a> | <a href="<%= next_url %>">Next</a>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <td>Name</td>
+      <th>Uri</th>
+      <th>Last Activity</th>
+      <th>Status</th>
+      <th>Business Directory Id</th>
+      <th>Notification Capabilities</th>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Altitude</th>
+      <th>Business Id</th>
+      <th>Country</th>
+      <th>Fax</th>
+      <th>Foursquare Venue Id</th>
+      <th>Franchise Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Phone</th>
+      <th>PO Box</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(stores).each do |store| %>
+    <tr>
+      <td><%= store['id'] %></td>
+      <td><%= store['name'] %></td>
+      <td><a href="<%= url(store['_uri']) %>"><%= h(store['_uri']) %></a></td>
+      <td><%= store['last_activity'] %></td>
+      <td><%= store['status'] %></td>
+      <td><%= store['business_directory_id'] %></td>
+      <td><%= store['notification_capabilities'] %></td>
+      <td><%= store['redemption_capabilities'] %></td>
+      <td><%= store['address1'] %></td>
+      <td><%= store['address2'] %></td>
+      <td><%= store['city'] %></td>
+      <td><%= store['state'] %></td>
+      <td><%= store['zip'] %></td>
+      <td><%= store['altitude'] %></td>
+      <td><%= store['business_id'] %></td>
+      <td><%= store['country'] %></td>
+      <td><%= store['fax'] %></td>
+      <td><%= store['foursquare_venue_id'] %></td>
+      <td><%= store['franchise_name'] %></td>
+      <td><%= store['latitude'] %></td>
+      <td><%= store['longitude'] %></td>
+      <td><%= store['phone'] %></td>
+      <td><%= store['po_box'] %></td>
+      <td><%= store['website'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<a href="<%= business_path(business) %>">Back</a>

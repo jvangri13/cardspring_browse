@@ -1,0 +1,20 @@
+<!--
+<%= result_body %>
+-->
+<h2>Business Details</h2>
+
+<div>
+  <a href="<%= url(business['_uri'] + "/stores") %>">Stores</a>
+</div>
+
+<p>Id: <%= business['id'] %></p>
+<p>Uri: <a href="<%= url(business['_uri']) %>"><%= business['_uri'] %></a></p>
+<p><b>Business Directory Id:</b> <%= business['business_directory_id'] %></p>
+<p><b>Name:</b> <%= business['name'] %></p>
+<p><b>Phone:</b> <%= business['phone'] %></p>
+<p><b>Email:</b> <%= business['email'] %></p>
+<p><b>Status:</b> <%= business['status'] %></p>
+<p><b>Notification Capabilities:</b> <%= business['notification_capabilities'].join(", ") %></p>
+<p><b>Redemption Capabilities:</b> <%= business['redemption_capabilities'].join(", ") %></p>
+
+<a href="<%= businesses_path %>">Back</a>

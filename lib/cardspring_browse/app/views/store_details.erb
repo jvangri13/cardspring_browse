@@ -1,0 +1,31 @@
+<!--
+<%= result_body %>
+-->
+<h2>Store Details</h2>
+
+<p>Id: <%= store['id'] %></p>
+<p>Uri: <a href="<%= url(store['_uri']) %>"><%= h(store['_uri']) %></a></p>
+<p><b>Name:</b> <%= store['name'] %></p>
+<p><b>Last Activity:</b> <%= store['last_activity'] %></p>
+<p><b>Status:</b> <%= store['status'] %></p>
+<p><b>Business Directory Id:</b> <%= store['business_directory_id'] %></p>
+<p><b>Notification Capabilities:</b> <%= store['notification_capabilities'] %></p>
+<p><b>Redemption Capabilities:</b> <%= store['redemption_capabilities'] %></p>
+<p><b>Address1:</b> <%= store['address1'] %></p>
+<p><b>Address2:</b> <%= store['address2'] %></p>
+<p><b>City:</b> <%= store['city'] %></p>
+<p><b>State:</b> <%= store['state'] %></p>
+<p><b>Zip:</b> <%= store['zip'] %></p>
+<p><b>Altitude:</b> <%= store['altitude'] %></p>
+<p><b>Business Id:</b> <%= store['business_id'] %></p>
+<p><b>Country:</b> <%= store['country'] %></p>
+<p><b>Fax:</b> <%= store['fax'] %></p>
+<p><b>Foursquare Venue Id:</b> <%= store['foursquare_venue_id'] %></p>
+<p><b>Franchise Name:</b> <%= store['franchise_name'] %></p>
+<p><b>Latitude:</b> <%= store['latitude'] %></p>
+<p><b>Longitude:</b> <%= store['longitude'] %></p>
+<p><b>Phone:</b> <%= store['phone'] %></p>
+<p><b>PO Box:</b> <%= store['po_box'] %></p>
+<p><b>Website:</b> <%= store['website'] %></p>
+
+<a href="<%= business_stores_path(business) %>">Back</a>

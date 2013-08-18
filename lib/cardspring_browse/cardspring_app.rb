@@ -5,6 +5,7 @@ require_relative './app/api_client'
 require_relative './app/cardspring'
 require_relative './app/users'
 require_relative './app/events'
+require_relative './app/businesses'
 
 module CardspringBrowse
   class CardspringApp < Sinatra::Base
@@ -17,5 +18,6 @@ module CardspringBrowse
     use CardspringBrowse::Cardspring
     use CardspringBrowse::Users
     use CardspringBrowse::Events
+    use CardspringBrowse::Businesses
   end
 end
