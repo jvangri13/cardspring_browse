@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cardspring_browse (0.1.0)
+    cardspring_browse (0.2.0)
       faraday (~> 0.8.8)
       sinatra (~> 1.4.3)
 
@@ -18,6 +18,8 @@ GEM
     rack-protection (1.5.0)
       rack
     rake (10.1.0)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -36,4 +38,5 @@ DEPENDENCIES
   cardspring_browse!
   minitest
   rake
+  shotgun
   thin

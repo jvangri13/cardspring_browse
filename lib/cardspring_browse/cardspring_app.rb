@@ -1,5 +1,7 @@
 require 'sinatra/base'
 require_relative './global_settings'
+require_relative './app/api_client_manager'
+require_relative './app/api_client'
 require_relative './app/cardspring'
 require_relative './app/users'
 

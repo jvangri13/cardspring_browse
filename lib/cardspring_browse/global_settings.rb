@@ -11,7 +11,6 @@ module CardspringBrowse
       def initial_setup
         @@settings = Hash.new
         @@settings[:cardspring_yaml_path] = File.expand_path("../../config/cardspring.yml", File.dirname(__FILE__))
-        p @@settings[:cardspring_yaml_path]
       end
 
       @@settings ||= :not_set_yet

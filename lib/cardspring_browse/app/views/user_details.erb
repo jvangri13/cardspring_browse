@@ -4,7 +4,7 @@
 <h2>User Details</h2>
 
 <p>Id: <%= user['id'] %></p>
-<p>Uri: <%= user['_uri'] %></p>
+<p>Uri: <a href="<%= url(user['_uri']) %>"><%= user['_uri'] %></a></p>
 
 <% unless user['cards'].nil? %>
 <table>
@@ -20,6 +20,7 @@
       <th>User_id</th>
       <th>Uri</th>
       <th>Capabilities</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -33,12 +34,13 @@
       <td><%= card['bank'] %></td>
       <td><%= card['country'] %></td>
       <td><%= card['user_id'] %></td>
-      <td><%= card['_uri'] %></td>
+      <td><a href="<%= url(card['_uri']) %>"><%= h(card['_uri']) %></a></td>
       <td><%= Array(card['capabilities']).join(", ") %></td>
+      <td><form action="<%= url(card['_uri']) %>" method="post"><input type="submit" value="Remove" /></form></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 <% end %>
 
-<a href="<%= users_path %>">Back</a> | <form action="<%= remove_user_path(user) %>" method="post"><input type="submit" value="Remove" /></form>
+<a href="<%= users_path %>">Back</a> | <form action="<%= url(user['_uri']) %>" method="post"><input type="submit" value="Remove" /></form>

@@ -18,9 +18,8 @@
   <% Array(users).each do |user| %>
     <tr>
       <td><%= user['id'] %></td>
-      <td><%= user['_uri'] %></td>
-      <td>
-        <a href="<%= user_path(user) %>">Details</a> | <form action="<%= remove_user_path(user) %>" method="post"><input type="submit" value="Remove" /></form></td>
+      <td><a href="<%= url(user['_uri']) %>"><%= h(user['_uri']) %></a></td>
+      <td><form action="<%= url(user['_uri']) %>" method="post"><input type="submit" value="Remove" /></form></td>
     </tr>
   <% end %>
   </tbody>

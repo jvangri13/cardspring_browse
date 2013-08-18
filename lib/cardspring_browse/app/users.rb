@@ -1,39 +1,39 @@
 require 'sinatra/base'
-require 'faraday'
 require 'json'
-require 'yaml'
 
 module CardspringBrowse
   class Users < Sinatra::Base
     helpers do
+      def h(text)
+        Rack::Utils.escape_html(text)
+      end
+
       def users_path
-        url("/users")
+        url("/v1/users")
       end
 
       def user_path(user_hash)
-        url("/users/#{user_hash['id']}")
-      end
-
-      def remove_user_path(user_hash)
-        url("/users/#{user_hash['id']}/remove")
+        url("/v1/users/#{user_hash['id']}")
       end
     end
 
-    get "/users" do
-      get_result = conn.get('users')
+    get "/v1/users" do
+      get_result = api.get(request.path)
       body = get_result.body
-      users = JSON.parse(body)['items']
+      body_hash = JSON.parse(body)
+      users = body_hash['items']
 
       erb :users, :locals => {
         :users => users,
         :result_body => body,
-        :previous_url => '',
-        :next_url => ''
+        :current_url => url(body_hash['_uri']),
+        :previous_url => url(body_hash['_previous_page_uri']),
+        :next_url => url(body_hash['_next_page_uri'])
       }
     end
 
-    get "/users/:id" do
-      get_result = conn.get("users/#{params[:id]}")
+    get "/v1/users/:id" do
+      get_result = api.get(request.path)
       body = get_result.body
       user = JSON.parse(body)
       erb :user_details, :locals => {
@@ -42,26 +42,32 @@ module CardspringBrowse
       }
     end
 
-    post "/users/:id/remove" do
-      conn.delete("users/#{params[:id]}")
-      redirect to("/users")
+    post "/v1/users/:id" do
+      api.delete(request.path)
+      redirect to("/v1/users")
+    end
+
+    get "/v1/users/:user_id/cards/:id" do
+      get_result = api.get(request.path)
+      body = get_result.body
+      card = JSON.parse(body)
+      erb :card_details, :locals => {
+        :result_body => body,
+        :card => card,
+        :user => { 'id' => params[:user_id] }
+      }
+    end
+
+    post "/v1/users/:user_id/cards/:id" do
+      api.delete(request.path)
+      redirect to("/v1/users/#{params[:user_id]}")
     end
 
     private
 
-    def configuration
-      @configuration ||= YAML.load_file(CardspringBrowse::GlobalSettings.current[:cardspring_yaml_path])[settings.environment.to_s]
+    def api
+      @api ||= CardspringBrowse::ApiClientManager.create_default_client(settings.environment)
     end
 
-    def conn
-      @conn ||= create_connection
-    end
-
-    def create_connection
-      conn = Faraday.new(configuration['api_base_url'])
-      conn.basic_auth(configuration['api_id'], configuration['api_secret'])
-      conn
-    end
   end
 end
-

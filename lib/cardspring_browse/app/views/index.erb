@@ -1,3 +1,13 @@
+<!--
+<%= result_body %>
+-->
 <h2>Cardspring browser</h2>
 
-<a href="<%= url("users") %>">Users</a>
+<a href="<%= url("v1/users") %>">Users</a>
+
+<p><b>Name:</b> <%= publisher['name'] %></p>
+<p><b>Callback URL:</b> <%= publisher['callback_url'] %></p>
+<p><b>Redemption Contact:</b> <%= publisher['redemption_contact'] %></p>
+<p><b>Reporting Email:</b> <%= publisher['reporting_email'] %></p>
+<p><b>Support Email:</b> <%= publisher['support_email'] %></p>
+<p><b>Operations Email:</b> <%= publisher['operations_email'] %></p>

@@ -1,0 +1,17 @@
+<!--
+<%= result_body %>
+-->
+<h2>Card Details</h2>
+
+<p>Token: <%= card['token'] %></p>
+<p>Last4: <%= card['last4'] %></p>
+<p>Expiration: <%= card['expiration'] %></p>
+<p>Brand: <%= card['brand'] %></p>
+<p>Brand_string: <%= card['brand_string'] %></p>
+<p>Bank: <%= card['bank'] %></p>
+<p>Country: <%= card['country'] %></p>
+<p>User_id: <%= card['user_id'] %></p>
+<p>Uri: <a href="<%= url(card['_uri']) %>"><%= h(card['_uri']) %></a></p>
+<p>Capabilities: <%= Array(card['capabilities']).join(", ") %></p>
+
+<a href="<%= user_path(user) %>">Back</a> | <form action="<%= url(card['_uri']) %>" method="post"><input type="submit" value="Remove" /></form>
