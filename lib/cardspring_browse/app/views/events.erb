@@ -1,0 +1,32 @@
+<!--
+<%= result_body %>
+-->
+<h2>Events</h2>
+
+<div class="pagination">
+<a href="<%= previous_url %>">Previous</a> | <a href="<%= next_url %>">Next</a>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Type</th>
+      <th>Creation Date (UTC)</th>
+      <th>Delivery Data (UTC)</th>
+      <th>Response Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(events).each do |event| %>
+    <tr>
+      <td><%= event['id'] %></td>
+      <td><%= event['type'] %></td>
+      <td><%= event['creation_date_time_utc'] %></td>
+      <td><%= event['delivery_date_time_utc'] %></td>
+      <td><%= event['response_status'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<a href="<%= url("/") %>">Back</a>
