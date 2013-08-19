@@ -4,4 +4,4 @@ Bundler.setup
 
 require 'cardspring_browse'
 
-run CardspringBrowse::CardspringApp
+run CardspringBrowse::Application

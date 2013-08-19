@@ -8,7 +8,7 @@ require_relative './app/events'
 require_relative './app/businesses'
 
 module CardspringBrowse
-  class CardspringApp < Sinatra::Base
+  class Application < Sinatra::Base
     set :public_dir, File.expand_path("./app/public", File.dirname(__FILE__))
     set :static, true
 
