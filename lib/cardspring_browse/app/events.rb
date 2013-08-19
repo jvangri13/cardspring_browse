@@ -5,7 +5,7 @@ module CardspringBrowse
   class Events < Sinatra::Base
 
     get "/v1/events" do
-      get_result = api.get(request.path)
+      get_result = api.get(request.path_info)
       body = get_result.body
       body_hash = JSON.parse(body)
       events = body_hash['items']

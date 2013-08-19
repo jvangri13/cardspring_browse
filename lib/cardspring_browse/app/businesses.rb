@@ -22,7 +22,7 @@ module CardspringBrowse
     end
 
     get "/v1/businesses" do
-      get_result = api.get(request.path)
+      get_result = api.get(request.path_info)
       body = get_result.body
       body_hash = JSON.parse(body)
       businesses = body_hash['items']
@@ -37,7 +37,7 @@ module CardspringBrowse
     end
 
     get "/v1/businesses/:id" do
-      get_result = api.get(request.path)
+      get_result = api.get(request.path_info)
       body = get_result.body
       business = JSON.parse(body)
       erb :business_details, :locals => {
@@ -47,7 +47,7 @@ module CardspringBrowse
     end
 
     get "/v1/businesses/:business_id/stores" do
-      get_result = api.get(request.path)
+      get_result = api.get(request.path_info)
       body = get_result.body
       body_hash = JSON.parse(body)
       stores = body_hash['items']
@@ -63,7 +63,7 @@ module CardspringBrowse
     end
 
     get "/v1/businesses/:business_id/stores/:id" do
-      get_result = api.get(request.path)
+      get_result = api.get(request.path_info)
       body = get_result.body
       store = JSON.parse(body)
       erb :store_details, :locals => {
