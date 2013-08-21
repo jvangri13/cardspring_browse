@@ -1,23 +1,21 @@
 require 'sinatra/base'
-require_relative './global_settings'
-require_relative './app/api_client_manager'
-require_relative './app/api_client'
-require_relative './app/cardspring'
-require_relative './app/users'
-require_relative './app/events'
-require_relative './app/businesses'
+require_relative 'app/cardspring'
 
 module CardspringBrowse
-  class Application < Sinatra::Base
-    set :public_dir, File.expand_path("./app/public", File.dirname(__FILE__))
-    set :static, true
+  class Application
 
-    get "/favicon.ico" do
+    def initialize(config_file)
+      @config_file = config_file
     end
 
-    use CardspringBrowse::Cardspring
-    use CardspringBrowse::Users
-    use CardspringBrowse::Events
-    use CardspringBrowse::Businesses
+    def call(env)
+      env['cardspring.browse.config.file'] = @config_file
+      app.call(env)
+    end
+
+    def app
+      @app ||= CardspringBrowse::App::Cardspring.new(self)
+    end
+
   end
 end
