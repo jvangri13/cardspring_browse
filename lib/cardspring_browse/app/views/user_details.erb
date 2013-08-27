@@ -1,6 +1,3 @@
-<!--
-<%= result_body %>
--->
 <h2>User Details</h2>
 
 <div>
@@ -48,3 +45,7 @@
 <% end %>
 
 <a href="<%= users_path %>">Back</a> | <form action="<%= url(user['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form>
+
+<code class="javascript">
+<%= result_body %>
+</code>

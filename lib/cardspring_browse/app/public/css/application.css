@@ -1,1 +1,8 @@
-# application
+code {
+  border: 2px black dashed;
+  display: block;
+  padding: 10px 20px 10px 20px;
+  margin: 5px 0px 5px 0px;
+  background-color: rgba(225, 245, 250, 0.75);
+  white-space: pre;
+}
