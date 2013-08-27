@@ -1,0 +1,28 @@
+<!--
+<%= result_body %>
+-->
+<h2>Apps</h2>
+
+<div class="pagination">
+  <a href="<%= previous_url %>">Previous</a> | <a href="<%= current_url %>">Apps</a> | <a href="<%= next_url %>">Next</a>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Uri</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Array(apps).each do |app| %>
+    <tr>
+      <td><%= app['id'] %></td>
+      <td><a href="<%= url(app['_uri']) %>"><%= h(app['_uri']) %></a></td>
+      <td><form action="<%= url(app['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<a href="<%= back_url %>">Back</a>

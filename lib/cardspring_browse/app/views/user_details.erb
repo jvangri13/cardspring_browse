@@ -3,6 +3,10 @@
 -->
 <h2>User Details</h2>
 
+<div>
+  <a href="<%= url(user['_uri'] + "/apps") %>">Apps</a>
+</div>
+
 <p>Id: <%= user['id'] %></p>
 <p>Uri: <a href="<%= url(user['_uri']) %>"><%= user['_uri'] %></a></p>
 

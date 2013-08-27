@@ -2,6 +2,7 @@ require_relative 'controller'
 require_relative 'users'
 require_relative 'events'
 require_relative 'businesses'
+require_relative 'apps'
 
 module CardspringBrowse
   module App
@@ -14,6 +15,7 @@ module CardspringBrowse
       use CardspringBrowse::App::Users
       use CardspringBrowse::App::Events
       use CardspringBrowse::App::Businesses
+      use CardspringBrowse::App::Apps
 
       get "/favicon.ico" do
       end
