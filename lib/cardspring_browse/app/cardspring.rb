@@ -9,6 +9,7 @@ module CardspringBrowse
       set :public_dir, File.expand_path("../public", __FILE__)
       enable :static
       enable :logging
+      enable :method_override
 
       use CardspringBrowse::App::Users
       use CardspringBrowse::App::Events

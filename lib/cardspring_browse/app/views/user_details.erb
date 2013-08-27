@@ -36,11 +36,11 @@
       <td><%= card['user_id'] %></td>
       <td><a href="<%= url(card['_uri']) %>"><%= h(card['_uri']) %></a></td>
       <td><%= Array(card['capabilities']).join(", ") %></td>
-      <td><form action="<%= url(card['_uri']) %>" method="post"><input type="submit" value="Remove" /></form></td>
+      <td><form action="<%= url(card['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 <% end %>
 
-<a href="<%= users_path %>">Back</a> | <form action="<%= url(user['_uri']) %>" method="post"><input type="submit" value="Remove" /></form>
+<a href="<%= users_path %>">Back</a> | <form action="<%= url(user['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form>

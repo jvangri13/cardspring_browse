@@ -14,4 +14,4 @@
 <p>Uri: <a href="<%= url(card['_uri']) %>"><%= h(card['_uri']) %></a></p>
 <p>Capabilities: <%= Array(card['capabilities']).join(", ") %></p>
 
-<a href="<%= user_path(user) %>">Back</a> | <form action="<%= url(card['_uri']) %>" method="post"><input type="submit" value="Remove" /></form>
+<a href="<%= user_path(user) %>">Back</a> | <form action="<%= url(card['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form>

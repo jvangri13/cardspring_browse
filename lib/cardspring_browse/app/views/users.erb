@@ -19,7 +19,7 @@
     <tr>
       <td><%= user['id'] %></td>
       <td><a href="<%= url(user['_uri']) %>"><%= h(user['_uri']) %></a></td>
-      <td><form action="<%= url(user['_uri']) %>" method="post"><input type="submit" value="Remove" /></form></td>
+      <td><form action="<%= url(user['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form></td>
     </tr>
   <% end %>
   </tbody>

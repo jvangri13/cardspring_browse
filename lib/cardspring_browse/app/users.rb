@@ -42,7 +42,7 @@ module CardspringBrowse
         }
       end
 
-      post "/v1/users/:id" do
+      delete "/v1/users/:id" do
         api.delete(request.path_info)
         redirect to("/v1/users")
       end
@@ -58,7 +58,7 @@ module CardspringBrowse
         }
       end
 
-      post "/v1/users/:user_id/cards/:id" do
+      delete "/v1/users/:user_id/cards/:id" do
         api.delete(request.path_info)
         redirect to("/v1/users/#{params[:user_id]}")
       end
