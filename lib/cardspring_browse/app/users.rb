@@ -18,7 +18,7 @@ module CardspringBrowse
       end
 
       get "/v1/users" do
-        get_result = api.get(request.path_info)
+        get_result = api.get(request_path)
         body = get_result.body
         body_hash = JSON.parse(body)
         users = body_hash['items']
@@ -33,7 +33,7 @@ module CardspringBrowse
       end
 
       get "/v1/users/:id" do
-        get_result = api.get(request.path_info)
+        get_result = api.get(request_path)
         body = get_result.body
         user = JSON.parse(body)
         erb :user_details, :locals => {
@@ -48,7 +48,7 @@ module CardspringBrowse
       end
 
       get "/v1/users/:user_id/cards/:id" do
-        get_result = api.get(request.path_info)
+        get_result = api.get(request_path)
         body = get_result.body
         card = JSON.parse(body)
         erb :card_details, :locals => {

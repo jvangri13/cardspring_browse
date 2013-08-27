@@ -5,7 +5,7 @@ module CardspringBrowse
     class Events < Controller
 
       get "/v1/events" do
-        get_result = api.get(request.path_info)
+        get_result = api.get(request_path)
         body = get_result.body
         body_hash = JSON.parse(body)
         events = body_hash['items']

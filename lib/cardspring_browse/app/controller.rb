@@ -9,6 +9,12 @@ module CardspringBrowse
 
       protected
 
+      def request_path
+        path = request.path_info
+        path << "?" + request.query_string unless request.query_string.empty?
+        path
+      end
+
       def api
         @api ||= ApiClient.new(env[PROPERTY_NAME], settings.environment)
       end
