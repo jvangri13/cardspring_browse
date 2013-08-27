@@ -3,6 +3,10 @@
 -->
 <h2>Store Details</h2>
 
+<div>
+  <a href="<%= url(store['_uri']) + "/connection" %>">Connection</a>
+</div>
+
 <p>Id: <%= store['id'] %></p>
 <p>Uri: <a href="<%= url(store['_uri']) %>"><%= h(store['_uri']) %></a></p>
 <p><b>Name:</b> <%= store['name'] %></p>

@@ -73,6 +73,17 @@ module CardspringBrowse
         }
       end
 
+      get "/v1/businesses/:business_id/stores/:id/connection" do
+        result = api.get(request_path)
+        body = result.body
+        connection = JSON.parse(body)
+        erb :connection, :locals => {
+          :result_body => body,
+          :connection => connection,
+          :business => { 'id' => params[:business_id] }
+        }
+      end
+
       get "/v1/businesses/:business_id/connection" do
         result = api.get(request_path)
         body = result.body
