@@ -1,0 +1,12 @@
+<!--
+<%= result_body %>
+-->
+<h2>Connection</h2>
+
+<p>Uri: <a href="<%= url(connection['_uri']) %>"><%= connection['_uri'] %></a></p>
+<p><b>Connection:</b> <%= connection['connection'] %></p>
+<p><b>Permissions:</b> <%= connection['permissions'] %></p>
+<p><b>Authorization:</b> <%= connection['authorization'] %></p>
+<p><b>Authorization Code:</b> <%= connection['authorization_code'] %></p>
+
+<a href="<%= businesses_path %>">Back</a>
