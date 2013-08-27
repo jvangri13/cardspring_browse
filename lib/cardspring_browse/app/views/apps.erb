@@ -11,6 +11,10 @@
     <tr>
       <th>Id</th>
       <th>Uri</th>
+      <th>Active</th>
+      <th>Status</th>
+      <th>Auto Connect</th>
+      <th>Notification Type</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -19,7 +23,11 @@
     <tr>
       <td><%= app['id'] %></td>
       <td><a href="<%= url(app['_uri']) %>"><%= h(app['_uri']) %></a></td>
-      <td><form action="<%= url(app['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form></td>
+      <td><%= app['active'] %></td>
+      <td><%= app['status'] %></td>
+      <td><%= app['auto_connect'] %></td>
+      <td><%= app['notification']['type'] %></td>
+      <td><a href="<%= url(app['_uri']) %>">Show</a> | <form action="<%= url(app['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form></td>
     </tr>
   <% end %>
   </tbody>

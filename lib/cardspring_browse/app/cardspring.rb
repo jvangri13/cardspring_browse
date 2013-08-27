@@ -12,6 +12,11 @@ module CardspringBrowse
       enable :logging
       enable :method_override
 
+      configure :development do
+        enable :dump_errors
+        enable :raise_errors
+      end
+
       use CardspringBrowse::App::Users
       use CardspringBrowse::App::Events
       use CardspringBrowse::App::Businesses

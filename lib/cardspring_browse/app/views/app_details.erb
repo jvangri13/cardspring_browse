@@ -1,0 +1,24 @@
+<!--
+<%= result_body %>
+-->
+<h2>App Details</h2>
+
+<p>Id: <%= app['id'] %></p>
+<p>Uri: <a href="<%= url(app['_uri']) %>"><%= app['_uri'] %></a></p>
+<p><b>Active:</b> <%= app['active'] %></p>
+<p><b>Status:</b> <%= app['status'] %></p>
+<p><b>Business Id:</b> <%= app['business_id'] %></p>
+<p><b>Store Id:</b> <%= app['store_id'] %></p>
+<p><b>Brands:</b> <%= app['brands'] %></p>
+<p><b>Start Date:</b> <%= app['start_date'] %></p>
+<p><b>End Date:</b> <%= app['end_date'] %></p>
+<p><b>Currency:</b> <%= app['currency'] %></p>
+<p><b>Auto Connect:</b> <%= app['auto_connect'] %></p>
+<p><b>Max Connections:</b> <%= app['max_connections'] %></p>
+<div>
+<p><b>Notification Type:</b> <%= app['notification']['type'] %></p>
+<p><b>Notification Min Purchase:</b> <%= app['notification']['min_purchase'] %></p>
+<p><b>Notification Count:</b> <%= app['notification']['count'] %></p>
+</div>
+
+<a href="<%= back_url %>">Back</a> | <form action="<%= url(app['_uri']) %>" method="post"><input type="hidden" name="_method" value="DELETE" /><input type="submit" value="Remove" /></form>
