@@ -19,6 +19,10 @@ module CardspringBrowse
         conn.delete(url)
       end
 
+      def post(url, params)
+        conn.post(url, params)
+      end
+
       private
 
       def conn
