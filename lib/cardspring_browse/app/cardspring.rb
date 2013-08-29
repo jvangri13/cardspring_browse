@@ -12,20 +12,16 @@ module CardspringBrowse
       enable :logging
       enable :method_override
 
-      configure :development do
-        enable :dump_errors
-        enable :raise_errors
-      end
-
       use CardspringBrowse::App::Users
       use CardspringBrowse::App::Events
       use CardspringBrowse::App::Businesses
       use CardspringBrowse::App::Apps
 
-      get "/favicon.ico" do
+      get "/" do
+        redirect to("/v1")
       end
 
-      get "/" do
+      get "/v1" do
         get_result = api.get("")
         body = get_result.body
         publisher = JSON.parse(body)
