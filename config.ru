@@ -4,9 +4,11 @@ Bundler.setup
 
 require 'cardspring_browse'
 
-use Rack::ContentLength
+use Rack::Config do |env|
+  env['rack.errors'] = $>
+end
+use Rack::CommonLogger
 
-config_path = File.expand_path("../config/cardspring.yml", __FILE__)
-app =  CardspringBrowse::Application.new(config_path)
+use CardspringBrowse::Application, File.expand_path("../config/cardspring.yml", __FILE__)
 
-run app
+run proc { |env| 404 }
