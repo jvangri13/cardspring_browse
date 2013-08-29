@@ -20,6 +20,7 @@ module CardspringBrowse
           :previous_url => url(body_hash['_previous_page_uri']),
           :next_url => url(body_hash['_next_page_uri']),
           :back_url => url("/"),
+          :new_url => "",
           :apps => apps
         }
       end
@@ -51,8 +52,28 @@ module CardspringBrowse
           :previous_url => url(body_hash['_previous_page_uri']),
           :next_url => url(body_hash['_next_page_uri']),
           :back_url => url("/v1/businesses/#{params[:id]}"),
+          :new_url => url("/v1/businesses/#{params[:id]}/apps/new"),
           :apps => apps
         }
+      end
+
+      get "/v1/businesses/:id/apps/new" do
+        erb :new_app, :locals => {
+          :post_url => url("/v1/businesses/#{params[:id]}/apps"),
+          :back_url => url("/v1/businesses/#{params[:id]}")
+        }
+      end
+
+      post "/v1/businesses/:id/apps" do
+        result = api.post(request.path_info, params['app'])
+        body = result.body
+        body_hash = JSON.parse(body)
+        unless body_hash.has_key?("error")
+          redirect to(request.path_info)
+        else
+          p "errors", body_hash
+          redirect to("/v1/businesses/:id/apps/new")
+        end
       end
 
       get "/v1/users/:id/apps" do
@@ -66,9 +87,31 @@ module CardspringBrowse
           :previous_url => url(body_hash['_previous_page_uri']),
           :next_url => url(body_hash['_next_page_uri']),
           :back_url => url("/v1/users/#{params[:id]}"),
+          :new_url => url("/v1/users/#{params[:id]}/apps/new"),
           :apps => apps
         }
       end
+
+      get "/v1/users/:id/apps/new" do
+        erb :new_user_app, :locals => {
+          :post_url => url("/v1/users/#{params[:id]}/apps"),
+          :back_url => url("/v1/users/#{params[:id]}")
+        }
+      end
+
+      post "/v1/users/:id/apps" do
+        result = api.post(request.path_info, params['app'])
+        body = result.body
+        p "result of user app post", body
+        body_hash = JSON.parse(body)
+        unless body_hash.has_key?("error")
+          redirect to(request.path_info)
+        else
+          p "errors", body_hash
+          redirect to("/v1/users/:id/apps/new")
+        end
+      end
+
     end
   end
 end
