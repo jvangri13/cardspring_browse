@@ -1,5 +1,10 @@
 require 'sinatra/base'
-require_relative 'app/cardspring'
+require_relative 'app/publisher'
+require_relative 'app/users'
+require_relative 'app/events'
+require_relative 'app/businesses'
+require_relative 'app/apps'
+require_relative 'app/transactions'
 
 module CardspringBrowse
   class Application < Sinatra::Base
@@ -12,7 +17,12 @@ module CardspringBrowse
       env[PROPERTY_NAME] = settings.config_file
     end
 
-    use CardspringBrowse::App::Cardspring
+    use CardspringBrowse::App::Publisher
+    use CardspringBrowse::App::Users
+    use CardspringBrowse::App::Events
+    use CardspringBrowse::App::Businesses
+    use CardspringBrowse::App::Apps
+    use CardspringBrowse::App::Transactions
 
     def initialize(app, config_file = __FILE__)
       super(app)
