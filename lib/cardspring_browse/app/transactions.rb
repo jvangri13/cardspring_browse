@@ -35,7 +35,7 @@ module CardspringBrowse
           type_name            => form[type_name],
           "amount"             => form["amount"],
           "card_token"         => form["card_token"],
-          "purchase_date_time" => form["purchase_date_time"].upcase,
+          "purchase_date_time" => form["purchase_date_time"],
           "currency"           => form["currency"].upcase
         }.reject &EmptyValues
       end
