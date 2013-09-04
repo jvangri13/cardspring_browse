@@ -4,12 +4,33 @@ module CardspringBrowse
   module App
     class Transactions < Controller
 
-      get "/v1/transactions/new" do
+      get "/v1/transactions/:transaction_id" do 
+        result = api.get(request_path)
+        body = result.body
+        body_hash = JSON.parse(body)
+        erb :transaction_details, :locals => {
+          :result_body => body,
+          :transaction_details => body_hash
+        } 
+      end
+
+      post "/v1/transactions/create" do
+        result = api.put("/v1/transactions/#{params[:transaction_id]}", :type => params[:transaction_type] , :amount => params[:amount])
+        body = result.body
+        body_hash = JSON.parse(body)
+        if body_hash['status'] =~ /4/
+          p "errors", body
+        else
+          redirect to("/v1/events")
+        end
+      end
+
+      get "/v1/new_transaction" do
         erb :new_transaction, :locals => {
           :post_url => url("/v1/transactions"),
           :back_url => url("/v1/events")
-        }
-      end
+        } 
+      end 
 
       post "/v1/transactions" do
         post_data = cardspring_transaction_from_params
@@ -20,7 +41,7 @@ module CardspringBrowse
           redirect to("/v1/events")
         else
           p "errors", body_hash
-          redirect to("/v1/transactions/new")
+          redirect to("/v1/new_transaction")
         end
       end
 
