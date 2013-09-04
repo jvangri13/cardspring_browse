@@ -10,7 +10,8 @@ module CardspringBrowse
         body_hash = JSON.parse(body)
         erb :transaction_details, :locals => {
           :result_body => body,
-          :transaction_details => body_hash
+          :transaction_details => body_hash,
+          :back_url => url("/v1/events")
         } 
       end
 
