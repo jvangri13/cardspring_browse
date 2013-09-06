@@ -11,6 +11,28 @@ module CardspringBrowse
         }
       end
 
+      get "/v1/transactions/:transaction_id" do
+        result = api.get(request_path)
+        body = result.body
+        body_hash = JSON.parse(body)
+        erb :transaction_details, :locals => {
+          :result_body => body,
+          :transaction_details => body_hash,
+          :back_url => url("/v1/events")
+        }
+      end
+
+      post "/v1/transactions/create" do
+        result = api.put("/v1/transactions/#{params[:transaction_id]}", :type => params[:transaction_type] , :amount => params[:amount])
+        body = result.body
+        body_hash = JSON.parse(body)
+        if body_hash['status'].match(/^4/)
+          p "errors", body
+        else
+          redirect to("/v1/events")
+        end
+      end
+
       post "/v1/transactions" do
         post_data = cardspring_transaction_from_params
         result = api.post(request.path_info, post_data)

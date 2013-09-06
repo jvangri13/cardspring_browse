@@ -1,0 +1,12 @@
+<h2>Event Details</h2>
+<p><strong> Details for <%= event_details["id"] %></strong> </p>
+<table>
+    <tr><td>Transaction:</td><td><a href="<%= event_details['transaction']['_uri'] %>"><%= event_details['transaction']['id'] %></a></td></tr>
+    <tr><td>Type:</td><td><%= event_details['type'] %></td></tr>
+</table>
+
+<a href="<%=back_url%>">Back</a>
+
+<code class="javascript">
+  <%= result_body %>
+</code>

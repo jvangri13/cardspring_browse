@@ -1,0 +1,43 @@
+<h2>Transaction Details</h2>
+<p><strong> Details for <%= transaction_details["id"] %></strong> </p>
+<table>
+  <% transaction_details.each do |key, value| %>
+    <tr><td> <%= key.gsub("_", " ") %></td><td align="right"><%= value %> </td></tr>
+  <% end %>
+</table>
+
+<p>
+  <form action="/v1/transactions/create" method="POST">
+    <strong>Create A Transaction:</strong>
+    <div>
+      <div>
+        <input type="radio" name="transaction_type" class="transaction_type" value="settlement" checked>Settlement</input>
+        <span id="amount_input">Amount:<input type="text" name="amount" /></span>
+      </div>
+      <div><input type="radio" name="transaction_type" class="transaction_type" value="reversal">Reversal</input></div>
+      <input type="hidden" value="<%= transaction_details["id"] %>" name="transaction_id" />
+      <p><input type='submit' /></p>
+    </div>
+  </form>
+</p>
+
+<a href="<%=back_url%>">Back</a>
+
+<script type='text/javascript'>
+
+  $(function($){
+    $(".transaction_type").on("change", function(e) {
+      if ($(e.target).attr("value") === 'settlement') {
+        $("#amount_input").show();
+      } else {
+        $("#amount_input").hide();
+      }
+    });
+  });
+
+</script>
+
+<code class="javascript">
+  <%= result_body %>
+</code>
+

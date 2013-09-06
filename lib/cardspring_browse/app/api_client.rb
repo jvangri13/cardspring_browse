@@ -23,6 +23,10 @@ module CardspringBrowse
         conn.post(url, params)
       end
 
+      def put(url, params)
+        conn.put(url, params)
+      end
+
       private
 
       def conn
