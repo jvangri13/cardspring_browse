@@ -17,6 +17,12 @@ module CardspringBrowse
         end
       end
 
+      post "/v1/users" do 
+        result = api.post(request_path,{})
+        body = result.body
+        redirect to("/v1/users")
+      end
+
       get "/v1/users" do
         get_result = api.get(request_path)
         body = get_result.body
