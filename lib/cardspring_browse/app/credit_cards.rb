@@ -6,9 +6,6 @@ module CardspringBrowse
 
       get "/v1/credit_cards/new/:id" do
         get_result = api.get(request_path)
-        body = get_result.body
-        body_hash = JSON.parse(body)
-        
         erb :new_credit_card, :locals => {
           :post_url => url("/v1/users/#{params[:id]}/cards"),
           :back_url => url("/v1/users/#{params[:id]}")
