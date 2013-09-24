@@ -19,7 +19,7 @@ module CardspringBrowse
         result = api.post(request.path_info, {pan: params["credit_card"]["pan"], expiration: params["credit_card"]["expiration"]})
         body = result.body
         body_hash = JSON.parse(body)
-         if body_hash['status'].match(/^4/)
+         if body_hash['status'] && body_hash['status'].match(/^4/)
           p "Errors: ", body
         else
           redirect to("/v1/users/#{params[:id]}")
